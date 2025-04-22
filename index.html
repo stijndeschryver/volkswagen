@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Advertisement</title>
+    <title>Volkswagen banners</title>
+    
+    <!-- Load Mulish font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -13,10 +20,28 @@
             min-height: 100vh;
             background: #f0f0f0;
             gap: 20px;
+            font-family: "Mulish", sans-serif;
         }
-        iframe { border: none;
+
+        .ad-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ad-block p {
+            margin: 0;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        iframe {
+            border: none;
             background: white;
-            overflow: hidden; }
+            overflow: hidden;
+        }
+
         img {
             width: 10rem;
             height: auto;
@@ -24,8 +49,16 @@
     </style>
 </head>
 <body>
-<iframe id="ad1" width="970" height="250"></iframe>
-<iframe id="ad2" width="970" height="250"></iframe>
+<div class="ad-block">
+    <p>without onshore</p>
+    <iframe id="ad1" width="970" height="250"></iframe>
+</div>
+
+<div class="ad-block">
+    <p>with onshore</p>
+    <iframe id="ad2" width="970" height="250"></iframe>
+</div>
+
 <img src="./onshore.svg" alt="logo">
 
 <script>
