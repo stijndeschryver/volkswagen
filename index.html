@@ -13,23 +13,22 @@
             background: #f0f0f0;
             gap: 20px;
         }
-
-        iframe {
-            border: none;
-            overflow: hidden;
-        }
+        iframe { border: none;
+            background: white;
+            overflow: hidden; }
     </style>
 </head>
 <body>
-<iframe
-        src="./old/Advertisement.html"
-        width="970"
-        height="250">
-</iframe>
-<iframe
-        src="./new/000831-NewBizz-VW_970x250_NL.html"
-        width="970"
-        height="250">
-</iframe>
+<iframe id="ad1" width="970" height="250"></iframe>
+<iframe id="ad2" width="970" height="250"></iframe>
+
+<script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            ad1.src = './old/Advertisement.html';
+            ad2.src = './new/000831-NewBizz-VW_970x250_NL.html';
+        }, 500);
+    });
+</script>
 </body>
 </html>
