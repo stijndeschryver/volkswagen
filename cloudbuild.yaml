@@ -1,0 +1,31 @@
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build',
+            '-t', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/onshore-volkswagen',
+            '.' ]
+
+  # Push the image to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/onshore-volkswagen' ]
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'onshore-volkswagen'
+      - '--image=europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/onshore-volkswagen'
+      - '--platform=managed'
+      - '--region=europe-west1'
+      - '--port=8080'
+      - '--allow-unauthenticated'
+
+# Optional: store results
+images:
+  - 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/onshore-volkswagen'
+
+# Add logging options
+options:
+  logging: CLOUD_LOGGING_ONLY
